@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" type="text/css" href="timer-style.css">
+  </head>
+  <body>
+    <div id = "back" class="bgimg">
+
+        <!--Add heading -->
+        <h1>NEW YEAR ARRIVING IN</h1>
+        <!-- add a horizontal rule for aesthetics -->
+        <hr>
+        <!-- add a paragraph -->
+        <p id="demo" style= "font-size: 30px"></p>
+    </div>
+    <script type="text/javascript">
+      //setting date we're counting down to
+      var countDownDate = new Date("Dec 31, 2018 00:00:00").getTime();
+      //update countdown every 1 second
+      var countDownfunction = setInterval(function() {
+      //get today's date and time
+      var now = new Date().getTime();
+      //find the distance between now and the countdown Date
+      var distance = countDownDate - now;
+      //time calculations for days, hours, minutes, seconds
+      var days = Math.floor(distance / (1000*60*60*24));
+      var hours = Math.floor(distance % (1000*60*60*24) / (1000*60*60));
+      var minutes = Math.floor(distance % (1000*60*60) / (1000*60));
+      var seconds = Math.floor(distance % (1000*60) / 1000);
+      //output result in an id called demo
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      //if the countdown is over
+      if(distance <= 0)
+      {
+        clearInterval(countDownfunction);
+        document.getElementById("demo").innerHTML = "NEW YEAR IS OVER";
+        document.getElementById("back").background = url("image_change_to.jpg");
+      }
+    }, 1000);
+    </script>
+  </body>
+</html>
